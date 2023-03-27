@@ -1,0 +1,28 @@
+<form class="login" [formGroup]="form" (ngSubmit)="login()">
+  <h1>SignUp</h1>
+  <mat-form-field appearance="outline">
+    <mat-label>Enter your name</mat-label>
+    <input matInput formControlName="name" required />
+    <mat-error *ngIf="form.controls.name.invalid">
+      Please enter your name
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Enter your email</mat-label>
+    <input matInput formControlName="email" required />
+    <mat-error *ngIf="form.controls.email.invalid">
+      Please enter a valid email
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Enter your password</mat-label>
+    <input matInput formControlName="password" required />
+    <mat-error *ngIf="form.controls.password.invalid">
+      Please enter a valid password
+    </mat-error>
+  </mat-form-field>
+  <mat-slide-toggle formControlName="status">
+    {{ form.controls.status.value ? "Ativo" : "Inativo" }}
+  </mat-slide-toggle>
+  <button type="submit" color="primary" mat-flat-button>Login</button>
+</form>
