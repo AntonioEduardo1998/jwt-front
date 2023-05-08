@@ -1,0 +1,11 @@
+<form class="create-product" [formGroup]="form" (ngSubmit)="createProduct()">
+  <h1>Create product</h1>
+  <mat-form-field appearance="outline">
+    <mat-label>Enter product name</mat-label>
+    <input matInput formControlName="name" required />
+    <mat-error *ngIf="form.controls.name.invalid">
+      Please enter the name of the product
+    </mat-error>
+  </mat-form-field>
+  <button type="submit" color="primary" mat-flat-button>Create</button>
+</form>

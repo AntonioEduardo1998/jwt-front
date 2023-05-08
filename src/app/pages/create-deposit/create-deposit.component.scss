@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.create-deposit {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid grey;
+  border-radius: 8px;
+  padding: 3rem;
+  width: 100%;
+  max-width: 400px;
+}

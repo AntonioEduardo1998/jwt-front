@@ -1,0 +1,18 @@
+<form class="create-deposit" [formGroup]="form" (ngSubmit)="createDeposit()">
+  <h1>Create deposit</h1>
+  <mat-form-field appearance="outline">
+    <mat-label>Enter deposit name</mat-label>
+    <input matInput formControlName="name" required />
+    <mat-error *ngIf="form.controls.name.invalid">
+      Please enter the name of the deposit
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Enter branch name</mat-label>
+    <input matInput formControlName="branch" required />
+    <mat-error *ngIf="form.controls.branch.invalid">
+      Please enter the name of the branch
+    </mat-error>
+  </mat-form-field>
+  <button type="submit" color="primary" mat-flat-button>Create</button>
+</form>
