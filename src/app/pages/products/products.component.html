@@ -1,0 +1,13 @@
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+  </tr>
+  <tr *ngFor="let product of products$ | async">
+    <td>{{product.id}}</td>
+    <td>{{product.name}}</td>
+  </tr>
+</table>
+<button mat-flat-button routerLink="/buy-product" color="primary">
+  Buy product
+</button>

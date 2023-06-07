@@ -29,4 +29,32 @@ export class ProductService {
       }
     );
   }
+
+  public products(): Observable<ProductResponse[]> {
+    return this.http.get<ProductResponse[]>(
+      'http://localhost:3000/products',
+      {
+        headers: {
+          Authorization: `Bearer ${this.auth_token}`,
+        },
+      }
+    );
+  }
+
+  public buyProduct(data: any): Observable<ProductResponse[]> {
+
+    const productId = data.productId;
+
+    return this.http.post<ProductResponse[]>(
+      `http://localhost:3000/product/buy/${productId}`,
+      {
+        ...data,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${this.auth_token}`,
+        },
+      }
+    );
+  }
 }

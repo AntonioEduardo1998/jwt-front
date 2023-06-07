@@ -16,10 +16,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CreateProductComponent } from './pages/create-product/create-product.component';
 import { CreateDepositComponent } from './pages/create-deposit/create-deposit.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { CommonModule } from '@angular/common';
+import {MatTableModule} from '@angular/material/table';
+import { BuyProductComponent } from './pages/buy-product/buy-product.component';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, SignupComponent, CreateProductComponent, CreateDepositComponent],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -32,6 +37,11 @@ import { CreateDepositComponent } from './pages/create-deposit/create-deposit.co
     MatSlideToggleModule,
     MatToolbarModule,
     MatIconModule,
+    MatTableModule
+  ],
+  exports: [
+    CommonModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent],

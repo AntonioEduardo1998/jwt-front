@@ -33,4 +33,15 @@ export class DepositService {
       }
     );
   }
+
+  public deposits(): Observable<DepositResponse[]> {
+    return this.http.get<DepositResponse[]>(
+      'http://localhost:3000/deposits',
+      {
+        headers: {
+          Authorization: `Bearer ${this.auth_token}`,
+        },
+      }
+    );
+  }
 }
