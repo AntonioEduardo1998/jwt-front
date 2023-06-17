@@ -1,10 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { DepositService } from 'src/app/services/deposit.service';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -20,11 +25,10 @@ import { ProductService } from 'src/app/services/product.service';
     MatInputModule,
     MatButtonModule,
     CommonModule,
-    MatSelectModule
-  ]
+    MatSelectModule,
+  ],
 })
 export class BuyProductComponent {
-
   private readonly fb = new FormBuilder().nonNullable;
 
   private readonly productService = inject(ProductService);
@@ -45,9 +49,6 @@ export class BuyProductComponent {
   });
 
   public buyProduct(): void {
-    this.productService.buyProduct(this.form.value).subscribe((res) => {
-      console.log('Produto comprado com sucesso!');
-      console.log(res);
-    });
+    this.productService.buyProduct(this.form.value).subscribe();
   }
 }

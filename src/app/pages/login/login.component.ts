@@ -31,7 +31,6 @@ export class LoginComponent {
       .subscribe({
         next: ({ access_token }) => {
           localStorage.setItem('@userToken', access_token);
-          console.log('Login realizado com sucesso!');
         },
       });
   }

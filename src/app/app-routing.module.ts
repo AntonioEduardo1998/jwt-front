@@ -6,32 +6,39 @@ import { CreateProductComponent } from './pages/create-product/create-product.co
 import { CreateDepositComponent } from './pages/create-deposit/create-deposit.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { BuyProductComponent } from './pages/buy-product/buy-product.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: LoginComponent,
-  },
   {
     path: 'signup',
     component: SignupComponent,
   },
   {
-    path: 'create-product',
-    component: CreateProductComponent,
+    path: '',
+    component: LoginComponent,
   },
   {
-    path: 'create-deposit',
-    component: CreateDepositComponent,
+    path: '',
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'create-product',
+        component: CreateProductComponent,
+      },
+      {
+        path: 'create-deposit',
+        component: CreateDepositComponent,
+      },
+      {
+        path: 'products',
+        component: ProductsComponent,
+      },
+      {
+        path: 'buy-product',
+        component: BuyProductComponent,
+      },
+    ],
   },
-  {
-    path: 'products',
-    component: ProductsComponent
-  },
-  {
-    path: 'buy-product',
-    component: BuyProductComponent
-  }
 ];
 
 @NgModule({
