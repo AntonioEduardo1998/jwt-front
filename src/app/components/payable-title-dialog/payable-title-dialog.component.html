@@ -1,0 +1,17 @@
+<h1>Pay title</h1>
+<mat-form-field
+  class="payable-title-dialog__mat-form-field"
+  appearance="outline"
+>
+  <mat-label>Enter value</mat-label>
+  <input [formControl]="valueControl" matInput required type="number" />
+</mat-form-field>
+<button
+  [disabled]="valueControl.invalid"
+  class="payable-title-dialog__pay-btn"
+  (click)="pay()"
+  mat-flat-button
+  color="primary"
+>
+  Confirm
+</button>

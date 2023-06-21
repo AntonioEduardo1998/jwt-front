@@ -9,7 +9,7 @@
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Enter your password</mat-label>
-    <input matInput formControlName="password" required />
+    <input type="password" matInput formControlName="password" required />
     <mat-error *ngIf="form.controls.password.invalid">
       Please enter a valid password
     </mat-error>

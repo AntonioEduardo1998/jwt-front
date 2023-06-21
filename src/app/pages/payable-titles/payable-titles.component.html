@@ -1,0 +1,33 @@
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Due date</th>
+    <th>Original amount</th>
+    <th>Situation</th>
+    <th>Open amount</th>
+    <th>Created at</th>
+    <th>Updated at</th>
+    <th>Pay</th>
+  </tr>
+  <tr *ngFor="let payableTitle of payableTitles$ | async">
+    <td>{{ payableTitle.id }}</td>
+    <td>{{ payableTitle.dueDate | date : "dd/MM/yyyy" }}</td>
+    <td>{{ payableTitle.originalAmount }}</td>
+    <td>{{ payableTitle.situation }}</td>
+    <td>{{ payableTitle.openAmount }}</td>
+    <td>{{ payableTitle.createdAt | date : "dd/MM/yyyy, h:mm a'" }}</td>
+    <td>{{ payableTitle.updatedAt | date : "dd/MM/yyyy, h:mm a'" }}</td>
+    <td>
+      <button
+        *ngIf="payableTitle.situation !== 'liquidated'; else liquidated"
+        (click)="openPayableTitle(payableTitle.id, payableTitle.openAmount)"
+        mat-flat-button
+        color="primary"
+      >
+        Pay
+      </button>
+    </td>
+  </tr>
+</table>
+
+<ng-template #liquidated> <span> --- </span> </ng-template>

@@ -7,6 +7,16 @@ interface ProductResponse {
   name?: string;
 }
 
+interface PayableTitleResponse {
+  id: number;
+  dueDate: string;
+  originalAmount: number;
+  situation: string;
+  openAmount: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -31,8 +41,33 @@ export class ProductService {
   }
 
   public products(): Observable<ProductResponse[]> {
-    return this.http.get<ProductResponse[]>(
-      'http://localhost:3000/products',
+    return this.http.get<ProductResponse[]>('http://localhost:3000/products', {
+      headers: {
+        Authorization: `Bearer ${this.auth_token}`,
+      },
+    });
+  }
+
+  public payableTitles(): Observable<PayableTitleResponse[]> {
+    return this.http.get<PayableTitleResponse[]>(
+      'http://localhost:3000/payable-titles',
+      {
+        headers: {
+          Authorization: `Bearer ${this.auth_token}`,
+        },
+      }
+    );
+  }
+
+  public liquidatePayableTitle(
+    id: number,
+    value: number | null
+  ): Observable<unknown> {
+    return this.http.post<unknown>(
+      `http://localhost:3000/payable-title/liquidate/${id}`,
+      {
+        value,
+      },
       {
         headers: {
           Authorization: `Bearer ${this.auth_token}`,
@@ -42,7 +77,6 @@ export class ProductService {
   }
 
   public buyProduct(data: any): Observable<ProductResponse[]> {
-
     const productId = data.productId;
 
     return this.http.post<ProductResponse[]>(

@@ -18,11 +18,23 @@ import { CreateProductComponent } from './pages/create-product/create-product.co
 import { CreateDepositComponent } from './pages/create-deposit/create-deposit.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { CommonModule } from '@angular/common';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { BuyProductComponent } from './pages/buy-product/buy-product.component';
+import { PayableTitlesComponent } from './pages/payable-titles/payable-titles.component';
+import { DialogModule } from '@angular/cdk/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { PayableTitleDialogComponent } from './components/payable-title-dialog/payable-title-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SignupComponent, CreateProductComponent, CreateDepositComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    SignupComponent,
+    CreateProductComponent,
+    CreateDepositComponent,
+    PayableTitlesComponent,
+    PayableTitleDialogComponent,
+  ],
   imports: [
     CommonModule,
     BrowserModule,
@@ -37,12 +49,11 @@ import { BuyProductComponent } from './pages/buy-product/buy-product.component';
     MatSlideToggleModule,
     MatToolbarModule,
     MatIconModule,
-    MatTableModule
+    DialogModule,
+    MatSnackBarModule,
+    MatTableModule,
   ],
-  exports: [
-    CommonModule,
-    MatTableModule
-  ],
+  exports: [CommonModule, MatTableModule, DialogModule, MatSnackBarModule],
   providers: [],
   bootstrap: [AppComponent],
 })

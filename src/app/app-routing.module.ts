@@ -7,6 +7,7 @@ import { CreateDepositComponent } from './pages/create-deposit/create-deposit.co
 import { ProductsComponent } from './pages/products/products.component';
 import { BuyProductComponent } from './pages/buy-product/buy-product.component';
 import { AuthGuard } from './guards/auth.guard';
+import { PayableTitlesComponent } from './pages/payable-titles/payable-titles.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
       {
         path: 'products',
         component: ProductsComponent,
+      },
+      {
+        path: 'payable-titles',
+        component: PayableTitlesComponent,
       },
       {
         path: 'buy-product',

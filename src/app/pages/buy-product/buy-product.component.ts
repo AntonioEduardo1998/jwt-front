@@ -10,6 +10,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { take, tap } from 'rxjs/operators';
 import { DepositService } from 'src/app/services/deposit.service';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -35,6 +38,10 @@ export class BuyProductComponent {
 
   private readonly depositService = inject(DepositService);
 
+  private snackBar = inject(MatSnackBar);
+
+  private router = inject(Router);
+
   public products$ = this.productService.products();
 
   public deposits$ = this.depositService.deposits();
@@ -49,6 +56,19 @@ export class BuyProductComponent {
   });
 
   public buyProduct(): void {
-    this.productService.buyProduct(this.form.value).subscribe();
+    this.productService
+      .buyProduct(this.form.value)
+      .pipe(
+        tap(() => {
+          this.snackBar.open('Product purchased successfully', 'OK', {
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+          });
+          this.router.navigate(['/payable-titles']);
+        }),
+        take(1)
+      )
+      .subscribe();
   }
 }
